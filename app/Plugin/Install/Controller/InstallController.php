@@ -104,7 +104,11 @@ class InstallController extends Controller {
 			$config = $this->Session->read('Database.config');
 		} else {
 			$config = $this->defaultConfig;
-		}
+            $config['host'] = $_SERVER['DB_HOST'];
+            $config['login'] = $_SERVER['DB_USER'];
+            $config['password'] = $_SERVER['DB_PASS'];
+            $config['database'] = $_SERVER['DB_NAME'];
+        }
 		$this->set('config', $config);
 		if (!isset($this->request->data['Database'])) {
 			return $config;
