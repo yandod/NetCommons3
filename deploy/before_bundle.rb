@@ -13,6 +13,7 @@ run "rm -r #{release_path}/app/Plugin && ln -s #{shared_path}/app/Plugin #{relea
 
 # update nginx custom config
 sudo "cp #{release_path}/deploy/nginx-custom.conf /etc/nginx/servers/#{config.app}/custom.conf"
+sudo "/etc/init.d/nginx restart"
 
 # set timezone in php.ini
 sudo "echo 'date.timezone = Asia/Tokyo' > /etc/php/cgi-php5.4/ext-active/timezone.ini"
